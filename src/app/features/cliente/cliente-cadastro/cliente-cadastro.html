@@ -4,7 +4,15 @@
     <div class="mr-4">
       <div class="mb-4">
         <label class="block mb-1">Nome Completo</label>
-        <input type="text" formControlName="nome" class="input input-bordered w-full " />
+        <app-input
+          formControlName="nome"
+          type="text"
+          placeholder="Nome Completo"
+          hint="Preencha o nome completo"
+          [minlength]=3
+          [maxlength]=30
+          >
+        </app-input>
       </div>
       <div class="mb-4">
         <label class="block mb-1">Email</label>
