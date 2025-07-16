@@ -8,8 +8,8 @@ import { ToastService } from '../../services/toast/toast-services';
   styles: '',
 })
 export class ToastComponent {
-  mensagem: string = 'exemplo';
-  mostrar: boolean = true;
+  mensagem: string = '';
+  mostrar: boolean = false;
 
   constructor(private toastService: ToastService) {}
 

@@ -24,19 +24,16 @@ export class ClienteCadastro {
     private toast: ToastService
   ) {
     this.clienteForm = fb.group({
-      nome: ['joa', [Validators.required, Validators.minLength(3)]],
-      email: ['joao@email.com', [Validators.required, Validators.email]],
-      telefone: ['61996812321', Validators.required],
-      cpf: [
-        '07506947189',
-        [Validators.required, Validators.pattern(/^\d{11}$/)],
-      ],
-      cep: ['72863230', [Validators.required, Validators.pattern(/^\d{8}$/)]],
-      numero: ['03', Validators.required],
-      bairro: ['novo gama', Validators.required],
-      cidade: ['novo gama', Validators.required],
-      complemento: ['goias'],
-      estado: ['go', Validators.required],
+      nome: ['', [Validators.required, Validators.minLength(3)]],
+      email: ['', [Validators.required, Validators.email]],
+      telefone: ['', Validators.required],
+      cpf: ['',[Validators.required, Validators.pattern(/^\d{11}$/)],],
+      cep: ['', [Validators.required, Validators.pattern(/^\d{8}$/)]],
+      numero: ['', Validators.required],
+      bairro: ['', Validators.required],
+      cidade: ['', Validators.required],
+      complemento: [''],
+      estado: ['', Validators.required],
     });
   }
 
