@@ -1,0 +1,23 @@
+<div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100 fixed top-30 left-50 right-50">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>Telefone</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of listaClientes; track $index) {
+        <tr>
+          <th>{{item.id}}</th>
+          <td>{{item.nome}}</td>
+          <td>{{item.cpf}}</td>
+          <td>{{item.telefone}}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
