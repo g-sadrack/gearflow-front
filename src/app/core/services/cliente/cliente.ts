@@ -8,6 +8,9 @@ import { Cliente } from '../../../models/cliente';
   providedIn: 'root',
 })
 export class ClienteService {
+  static listarClientes() {
+    throw new Error('Method not implemented.');
+  }
   private apiUrl = 'http://localhost:8080/api/clientes';
 
   constructor(private http: HttpClient) {}
