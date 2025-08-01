@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Cliente } from '../../../models/cliente';
+import { OrdemServico } from '../ordemServico/ordemServico';
 
 @Injectable({
   providedIn: 'root',
@@ -21,6 +22,14 @@ export class ClienteService {
 
   listarClientes(): Observable<Cliente[]> {
     return this.http.get<Cliente[]>(this.apiUrl);
+  }
+
+  buscarCLienteId(id: number): Observable<Cliente> {
+    return this.http.get<Cliente>(`${this.apiUrl}/${id}`);
+  }
+
+  buscarClienteElistarUltimasOrdensServico(id: number): Observable<OrdemServico[]>{
+    return this.http.get<OrdemServico[]>(`${this.apiUrl}/${id}/ordens-servico`);
   }
 
 }
