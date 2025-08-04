@@ -1,4 +1,10 @@
-<div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100 fixed top-30 left-50 right-50">
+
+<div class="fixed inset-0 flex items-center justify-center h-screen bg-gray-100">
+  <div class="w-full max-w-lg">
+    <app-searchbar></app-searchbar>
+  </div>
+</div>
+<div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100 fixed top-50 left-50 right-50 border border-green-500 border-dotted">
   <table class="table">
     <thead>
       <tr>
@@ -10,14 +16,13 @@
     </thead>
     <tbody>
       @for (item of listaClientes; track $index) {
-        <tr>
-          <th>{{item.id}}</th>
-          <td><a [routerLink]="['/clientes', item.id]">{{item.nome}}</a></td>
-          <td>{{item.cpf}}</td>
-          <td>{{item.telefone}}</td>
-        </tr>
+      <tr>
+        <th>{{item.id}}</th>
+        <td><a [routerLink]="['/clientes', item.id]">{{item.nome}}</a></td>
+        <td>{{item.cpf}}</td>
+        <td>{{item.telefone}}</td>
+      </tr>
       }
     </tbody>
   </table>
 </div>
-
