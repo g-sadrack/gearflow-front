@@ -100,4 +100,5 @@ export class ClienteCadastro {
   showToast(message: string) {
     this.toast.show(message);
   }
+  
 }

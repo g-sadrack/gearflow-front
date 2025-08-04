@@ -32,7 +32,7 @@ export class ClienteDetalhado {
   this.clienteService
     .buscarClienteElistarUltimasOrdensServico(Number(id))
     .subscribe((ordemServicos) => {
-      this.ordemServico = ordemServicos;
+      
     });
   }
 }
