@@ -12,7 +12,7 @@
       @for (item of listaClientes; track $index) {
         <tr>
           <th>{{item.id}}</th>
-          <td>{{item.nome}}</td>
+          <td><a [routerLink]="['/clientes', item.id]">{{item.nome}}</a></td>
           <td>{{item.cpf}}</td>
           <td>{{item.telefone}}</td>
         </tr>

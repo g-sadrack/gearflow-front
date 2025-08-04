@@ -1,0 +1,44 @@
+<div class="w-full max-w-4xl mx-auto mt-24 p-6 bg-base-200 rounded shadow">
+  <div class="flex gap-4">
+    <div class="p-4 w-72">
+      <h2 class="text-2xl font-bold mb-8">{{ proprietario.nome }}</h2>
+      <p>Email: {{ proprietario.email }}</p>
+      <p>Telefone: {{ proprietario.telefone }}</p>
+      <p>CPF: {{ proprietario.cpf }}</p>
+      <p>Veículos:</p>
+      @for (veiculo of proprietario.veiculos; track $index) {
+      <p>{{ $index + 1 }} – {{ veiculo.marca }} {{ veiculo.modelo }}</p>
+      }
+    </div>
+    <div class="divider divider-horizontal"></div>
+    <div class="p-4 flex-1">
+      <h2 class="text-2xl font-bold mb-8">Últimos Serviços</h2>
+      <div class="overflow-x-auto">
+        <div class="overflow-x-auto">
+          <table class="table table-xs table-pin-rows table-pin-cols">
+            <thead>
+              <tr>
+                <td>Name</td>
+                <td>Job</td>
+                <td>company</td>
+                <td>location</td>
+                <td>Last Login</td>
+                <td>Favorite Color</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Cy Ganderton</td>
+                <td>Quality Control Specialist</td>
+                <td>Littel, Schaden and Vandervort</td>
+                <td>Canada</td>
+                <td>12/16/2020</td>
+                <td>Blue</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

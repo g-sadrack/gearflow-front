@@ -1,0 +1,22 @@
+<div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Placa</th>
+                <th>Marcar</th>
+                <th>Modelo</th>
+                <th>Ano</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (veiculo of veiculos; track $index) {
+            <tr>
+                <th>{{veiculo.placa}}</th>
+                <td>{{veiculo.marca}}</td>
+                <td>{{veiculo.modelo}}</td>
+                <td>{{veiculo.ano}}</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

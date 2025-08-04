@@ -2,11 +2,11 @@
   <div class="navbar-start">
     <div class="dropdown">
       <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /> </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+        </svg>
       </div>
-      <ul
-        tabindex="0"
-        class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+      <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
         <li><a>Item 1</a></li>
         <li>
           <a>Parent</a>
@@ -18,7 +18,7 @@
         <li><a>Item 3</a></li>
       </ul>
     </div>
-    <a routerLink ="/" class="btn btn-ghost text-xl">
+    <a routerLink="/" class="btn btn-ghost text-xl">
       <img src="/public/icon.svg" alt="Logo">
       Gearflow</a>
   </div>
@@ -28,20 +28,24 @@
         <details #clienteDropdown>
           <summary>Cliente</summary>
           <ul class="p-2">
-            <li><a routerLink="/cadastro-cliente" (click)="clienteDropdown.removeAttribute('open')">Cadastrar Cliente</a></li>
-            <li><a routerLink="/listagem-cliente" (click)="clienteDropdown.removeAttribute('open')">Listar Cliente</a></li>
+            <li><a routerLink="/cadastro-cliente" (click)="clienteDropdown.removeAttribute('open')">Cadastrar
+                Cliente</a></li>
+            <li><a routerLink="/listagem-cliente" (click)="clienteDropdown.removeAttribute('open')">Listar Cliente</a>
+            </li>
           </ul>
         </details>
       </li>
       <li>
-        <details>
-          <summary>Veiculos</summary>
+        <details #veiculoDropdown>
+          <summary>Veículos</summary>
           <ul class="p-2">
             <li><a>Buscar</a></li>
-            <li><a>Cadastrar</a></li>
+            <li><a routerLink="/listagem-veiculo" (click)="veiculoDropdown.removeAttribute('open')">Listar Veículos</a>
+            </li>
           </ul>
         </details>
       </li>
+
       <li>
         <details>
           <summary>Ordem de Serviço</summary>
