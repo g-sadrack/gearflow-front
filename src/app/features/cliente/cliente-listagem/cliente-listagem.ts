@@ -5,7 +5,7 @@ import { Searchbar } from "../../../shared/components/searchbar/searchbar";
 
 @Component({
   selector: 'app-cliente-listagem',
-  imports: [RouterModule, Searchbar],
+  imports: [RouterModule],
   templateUrl: './cliente-listagem.html',
   styleUrl: './cliente-listagem.css',
 })

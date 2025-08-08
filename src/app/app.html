@@ -1,13 +1,14 @@
 <div class="w-full h-screen">
   <main class="flex flex-col items-center justify-start min-h-screen overflow-auto pt-32">
     <app-navbar class="fixed top-0 left-0 w-full z-50"></app-navbar>
-    <div class="w-full max-w-4xl mt-8">
+    @if (showSearchBar$ | async) {
+    <div class="w-full max-w-4xl">
       <app-searchbar></app-searchbar>
     </div>
+    }
     <div class="w-full max-w-4xl mt-6">
       <router-outlet></router-outlet>
     </div>
     <app-toast></app-toast>
   </main>
 </div>
-
