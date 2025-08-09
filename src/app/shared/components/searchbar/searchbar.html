@@ -1,6 +1,11 @@
 <label class="flex items-center justify-left bg-transparent">
   <fieldset class="fieldset">
     <legend class="fieldset-legend">Busca rápida</legend>
-    <input type="text" class="input border border-base-content/5 input-sm w-96" placeholder="Ex: João" />
+    <input 
+      type="text" 
+      class="input border border-base-content/5 input-sm w-96" 
+      placeholder="Digite o valor de alguma coluna abaixo..." 
+      [formControl]="inputCtrl"
+      />
   </fieldset>
 </label>

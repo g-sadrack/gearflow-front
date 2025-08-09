@@ -9,7 +9,7 @@
             </tr>
         </thead>
         <tbody>
-            @for (veiculo of veiculos; track $index) {
+            @for (veiculo of veiculosFiltrados; track $index) {
             <tr>
                 <th>{{veiculo.placa}}</th>
                 <td>{{veiculo.marca}}</td>

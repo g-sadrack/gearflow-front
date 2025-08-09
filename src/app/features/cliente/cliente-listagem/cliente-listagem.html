@@ -9,7 +9,7 @@
       </tr>
     </thead>
     <tbody>
-      @for (item of listaClientes; track $index) {
+      @for (item of listaFiltrada; track $index) {
       <tr>
         <th>{{item.id}}</th>
         <td><a [routerLink]="['/clientes', item.id]">{{item.nome}}</a></td>

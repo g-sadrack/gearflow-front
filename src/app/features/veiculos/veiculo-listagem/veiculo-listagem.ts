@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Veiculo } from '../../../models/veiculo';
 import { VeiculoService } from '../../../core/services/veiculos/veiculos';
-import { ActivatedRoute } from '@angular/router';
+import { SearchService } from '../../../shared/services/search/search-service';
+import { debounceTime } from 'rxjs';
 
 @Component({
   selector: 'app-veiculo-listagem',
@@ -12,16 +13,37 @@ import { ActivatedRoute } from '@angular/router';
 export class VeiculoListagem {
 
   veiculos: Veiculo[] = [];
+  veiculosFiltrados: any[] = [];
 
   constructor(
-    private veiculoService: VeiculoService, 
-    private route: ActivatedRoute
-  ){}
+    private veiculoService: VeiculoService,
+    private search: SearchService,
+  ) { }
 
-  ngOnInit(){
-    this.veiculoService.listarVeiculos().subscribe((veiculo) =>{
+  ngOnInit() {
+    this.veiculoService.listarVeiculos().subscribe((veiculo) => {
       this.veiculos = veiculo;
-    } )
+      this.veiculosFiltrados = this.veiculos;
+    });
+
+    this.search.term$
+    .pipe(debounceTime(200))
+    .subscribe(term => this.filter(term));
+
+  }
+
+  filter(term: string): void {
+    const t = term.trim().toLowerCase();
+
+    if (!t) {
+      this.veiculosFiltrados = this.veiculos;
+      return;
+    }
+    this.veiculosFiltrados = this.veiculos.filter(veiculo =>
+      veiculo.placa.toLowerCase().includes(t) ||
+      veiculo.marca.toLowerCase().includes(t) ||
+      veiculo.modelo.toLowerCase().includes(t)
+    )
   }
 
 }

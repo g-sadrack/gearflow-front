@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ClienteService } from '../../../core/services/cliente/cliente';
 import { RouterModule } from '@angular/router';
-import { Searchbar } from "../../../shared/components/searchbar/searchbar";
+import { SearchService } from '../../../shared/services/search/search-service';
+import { debounceTime } from 'rxjs';
 
 @Component({
   selector: 'app-cliente-listagem',
@@ -11,12 +12,36 @@ import { Searchbar } from "../../../shared/components/searchbar/searchbar";
 })
 export class ClienteListagem implements OnInit {
   listaClientes: any[] = [];
+  listaFiltrada: any[] = [];
 
-  constructor(private clienteService: ClienteService) {}
+  constructor(
+    private clienteService: ClienteService,
+    private search: SearchService
+  ) { }
 
   ngOnInit(): void {
     this.clienteService.listarClientes().subscribe((cliente) => {
       this.listaClientes = cliente;
+      this.listaFiltrada = this.listaClientes;
     });
+
+    this.search.term$
+      .pipe(debounceTime(200))
+      .subscribe(term => this.filter(term));
   }
+
+  filter(term: string): void {
+    const t = term.trim().toLowerCase();
+
+    if (!t) {
+      this.listaFiltrada = this.listaClientes;
+      return;
+    }
+    this.listaFiltrada = this.listaClientes.filter(cliente =>
+      cliente.nome.toLowerCase().includes(t) ||
+      cliente.cpf.includes(t) ||
+      cliente.telefone.includes(t)
+    );
+  }
+
 }
