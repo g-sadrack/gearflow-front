@@ -32,6 +32,10 @@ export class VeiculoListagem {
 
   }
 
+  ngOnDestroy(): void {
+    this.search.setTerm('');
+  }
+
   filter(term: string): void {
     const t = term.trim().toLowerCase();
 

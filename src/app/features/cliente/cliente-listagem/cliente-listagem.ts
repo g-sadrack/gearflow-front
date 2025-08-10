@@ -30,6 +30,10 @@ export class ClienteListagem implements OnInit {
       .subscribe(term => this.filter(term));
   }
 
+  ngOnDestroy(): void {
+    this.search.setTerm('');
+  }
+
   filter(term: string): void {
     const t = term.trim().toLowerCase();
 
