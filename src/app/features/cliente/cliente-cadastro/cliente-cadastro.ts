@@ -8,6 +8,7 @@ import {
 import { Cliente } from '../../../models/cliente';
 import { ClienteService } from '../../../core/services/cliente/cliente';
 import { ToastService } from '../../../shared/services/toast/toast-services';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cliente-cadastro',
@@ -21,7 +22,8 @@ export class ClienteCadastro {
   constructor(
     private fb: FormBuilder,
     private clienteService: ClienteService,
-    private toast: ToastService
+    private toast: ToastService,
+    private router: Router
   ) {
     this.clienteForm = fb.group({
       nome: ['', [Validators.required, Validators.minLength(3)]],
@@ -42,8 +44,10 @@ export class ClienteCadastro {
       const cliente: Cliente = this.clienteForm.value;
       this.clienteService.cadastrarCliente(cliente).subscribe({
         next: (res) => {
+          const clienteId = res.id;
           this.showToast(`Cliente cadastrado com sucesso!`);
           this.clienteForm.reset();
+          this.router.navigate([`/cadastro-cliente/${clienteId}/associarveiculo`]);
         },
         error: (err) => {
           this.showToast(`Erro ao cadastrar cliente!`);

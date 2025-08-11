@@ -1,0 +1,84 @@
+<div class="w-full max-w-4xl mx-auto p-6 bg-base-200 rounded shadow">
+  <div class="flex gap-4">
+    <div class="p-4 w-72">
+      <h2 class="text-2xl font-bold mb-8">{{proprietario.nome}}</h2>
+      <p>Email: {{proprietario.email}}</p>
+      <p>Telefone:{{proprietario.telefone}} </p>
+      <p>CPF: {{proprietario.cpf}}</p>
+      <ul class="list bg-base-100 mt-5 rounded-box shadow-md">
+        <li class="p-4 pb-2 text-xs opacity-60 tracking-wide">Lista de Veiculos do proprietario</li>
+        @for (veiculos of proprietario.veiculos; track $index) {
+        <li class="list-row">
+          <div>
+            <div>{{veiculos.marca}}</div>
+            <div class="text-xs uppercase font-semibold opacity-60">{{veiculos.modelo}} - {{veiculos.ano}} - {{veiculos.placa}}</div>
+          </div>
+        </li>
+        }
+      </ul>
+    </div>
+    <div class="divider divider-horizontal"></div>
+    <div class="p-4 flex-1">
+      <h2 class="text-2xl font-bold mb-8">Cadastrar novo veiculo</h2>
+      <div class="overflow-x-auto">
+        <form class="gap-4 flex justify-start" [formGroup]="veiculoForm" (ngSubmit)="associarVeiculo()">
+          <div class="flex-1 mr-4 ml-4">
+            <div class="mb-4">
+              <label class="block mb-1">Placa</label>
+              <input type="text" formControlName="nome" class="input input-bordered w-30" />
+              <!--TODO fazer logica de erros-->
+              @if (veiculoForm.get('placa')?.touched && veiculoForm.get('placa')?.invalid) {
+              <div class="text-error text-sm mt-1">
+                @if (veiculoForm.get('placa')?.errors?.['required']) {
+                Placa é obrigatório.
+                }
+              </div>
+              }
+            </div>
+            <div class="mb-4">
+              <label class="block mb-1">Marca</label>
+              <input type="email" formControlName="email" class="input input-bordered w-30" />
+              @if (veiculoForm.get('email')?.touched && veiculoForm.get('email')?.invalid) {
+              <div class="text-error text-sm mt-1">
+                @if (veiculoForm.get('email')?.errors?.['required']) {
+                Email é obrigatório.
+                } @else if (veiculoForm.get('email')?.errors?.['email']) {
+                Email inválido.
+                }
+              </div>
+              }
+            </div>
+            <div class="mb-4">
+              <label class="block mb-1">Modelo</label>
+              <input type="text" formControlName="telefone" class="input input-bordered w-30" />
+            </div>
+          </div>
+          <div class="flex-1 mr-4 ml-4">
+            <div class="mb-4">
+              <label class="block mb-1">Ano</label>
+              <input type="text" formControlName="cpf" class="input input-bordered w-30" />
+              @if (veiculoForm.get('cpf')?.touched && veiculoForm.get('cpf')?.invalid) {
+              <div class="text-error text-sm mt-1">
+                @if (veiculoForm.get('cpf')?.errors?.['required']) {
+                CPF é obrigatório.
+                } @else if (veiculoForm.get('cpf')?.errors?.['pattern']) {
+                CPF inválido. Deve conter 11 dígitos.
+                }
+              </div>
+              }
+            </div>
+            <div class="mb-4">
+              <label class="block mb-1">Cor</label>
+              <input type="text" formControlName="cep" class="input input-bordered w-30" />
+            </div>
+            <div class="mb-4">
+              <label class="block mb-1">Quilometragem</label>
+              <input type="text" formControlName="numero" class="input input-bordered w-30" />
+            </div>
+            <button type="submit" class="btn btn-primary w-30 mt-4">Cadastrar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
