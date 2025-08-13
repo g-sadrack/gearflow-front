@@ -11,7 +11,8 @@
         <li class="list-row">
           <div>
             <div>{{veiculos.marca}}</div>
-            <div class="text-xs uppercase font-semibold opacity-60">{{veiculos.modelo}} - {{veiculos.ano}} - {{veiculos.placa}}</div>
+            <div class="text-xs uppercase font-semibold opacity-60">{{veiculos.modelo}} - {{veiculos.ano}} -
+              {{veiculos.placa}}</div>
           </div>
         </li>
         }
@@ -25,8 +26,7 @@
           <div class="flex-1 mr-4 ml-4">
             <div class="mb-4">
               <label class="block mb-1">Placa</label>
-              <input type="text" formControlName="nome" class="input input-bordered w-30" />
-              <!--TODO fazer logica de erros-->
+              <input type="text" formControlName="placa" class="input input-bordered w-30" />
               @if (veiculoForm.get('placa')?.touched && veiculoForm.get('placa')?.invalid) {
               <div class="text-error text-sm mt-1">
                 @if (veiculoForm.get('placa')?.errors?.['required']) {
@@ -37,43 +37,46 @@
             </div>
             <div class="mb-4">
               <label class="block mb-1">Marca</label>
-              <input type="email" formControlName="email" class="input input-bordered w-30" />
-              @if (veiculoForm.get('email')?.touched && veiculoForm.get('email')?.invalid) {
+              <input type="text" formControlName="marca" class="input input-bordered w-30" />
+              @if (veiculoForm.get('marca')?.touched && veiculoForm.get('marca')?.invalid) {
               <div class="text-error text-sm mt-1">
-                @if (veiculoForm.get('email')?.errors?.['required']) {
-                Email é obrigatório.
-                } @else if (veiculoForm.get('email')?.errors?.['email']) {
-                Email inválido.
+                @if (veiculoForm.get('marca')?.errors?.['required']) {
+                Marca é obrigatório.
                 }
               </div>
               }
             </div>
             <div class="mb-4">
               <label class="block mb-1">Modelo</label>
-              <input type="text" formControlName="telefone" class="input input-bordered w-30" />
+              <input type="text" formControlName="modelo" class="input input-bordered w-30" />
+              @if (veiculoForm.get('modelo')?.touched && veiculoForm.get('modelo')?.invalid) {
+              <div class="text-error text-sm mt-1">
+                @if (veiculoForm.get('modelo')?.errors?.['required']) {
+                Modelo é obrigatório.
+                }
+              </div>
+              }
             </div>
           </div>
           <div class="flex-1 mr-4 ml-4">
             <div class="mb-4">
               <label class="block mb-1">Ano</label>
-              <input type="text" formControlName="cpf" class="input input-bordered w-30" />
-              @if (veiculoForm.get('cpf')?.touched && veiculoForm.get('cpf')?.invalid) {
+              <input type="text" formControlName="ano" class="input input-bordered w-30" />
+              @if (veiculoForm.get('ano')?.touched && veiculoForm.get('ano')?.invalid) {
               <div class="text-error text-sm mt-1">
-                @if (veiculoForm.get('cpf')?.errors?.['required']) {
-                CPF é obrigatório.
-                } @else if (veiculoForm.get('cpf')?.errors?.['pattern']) {
-                CPF inválido. Deve conter 11 dígitos.
+                @if (veiculoForm.get('ano')?.errors?.['required']) {
+                Ano é obrigatório.
                 }
               </div>
               }
             </div>
             <div class="mb-4">
               <label class="block mb-1">Cor</label>
-              <input type="text" formControlName="cep" class="input input-bordered w-30" />
+              <input type="text" formControlName="cor" class="input input-bordered w-30" />
             </div>
             <div class="mb-4">
               <label class="block mb-1">Quilometragem</label>
-              <input type="text" formControlName="numero" class="input input-bordered w-30" />
+              <input type="text" formControlName="quilometragem" class="input input-bordered w-30" />
             </div>
             <button type="submit" class="btn btn-primary w-30 mt-4">Cadastrar</button>
           </div>

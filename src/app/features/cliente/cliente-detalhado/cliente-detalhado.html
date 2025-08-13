@@ -1,14 +1,21 @@
-<div class="w-full max-w-4xl mx-auto mt-24 p-6 bg-base-200 rounded shadow">
+<div class="w-full max-w-4xl mx-auto mb-12 p-6 bg-base-200 rounded shadow">
   <div class="flex gap-4">
     <div class="p-4 w-72">
-      <h2 class="text-2xl font-bold mb-8">{{ proprietario.nome }}</h2>
-      <p>Email: {{ proprietario.email }}</p>
-      <p>Telefone: {{ proprietario.telefone }}</p>
-      <p>CPF: {{ proprietario.cpf }}</p>
-      <p>Veículos:</p>
-      @for (veiculo of proprietario.veiculos; track $index) {
-      <p>{{ $index + 1 }} – {{ veiculo.marca }} {{ veiculo.modelo }}</p>
-      }
+      <h2 class="text-2xl font-bold mb-8">{{ proprietario?.nome }}</h2>
+      <p>Email: {{ proprietario?.email }}</p>
+      <p>Telefone: {{ proprietario?.telefone }}</p>
+      <p>CPF: {{ proprietario?.cpf }}</p>
+      <ul class="list bg-base-100 mt-5 rounded-box shadow-md">
+        <li class="p-4 pb-2 text-xs opacity-60 tracking-wide">Lista de Veiculos do proprietario</li>
+        @for (veiculos of proprietario?.veiculos; track $index) {
+        <li class="list-row">
+          <div>
+            <div>{{veiculos?.marca}}</div>
+            <div class="text-xs uppercase font-semibold opacity-60">{{veiculos.modelo}} - {{veiculos.ano}} - {{veiculos.placa}}</div>
+          </div>
+        </li>
+        }
+      </ul>
     </div>
     <div class="divider divider-horizontal"></div>
     <div class="p-4 flex-1">
